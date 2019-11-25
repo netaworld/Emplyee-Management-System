@@ -24,12 +24,6 @@ CREATE TABLE employees(
   PRIMARY KEY (id)
 );
 
-CREATE TABLE authors(
-  id INTEGER(11) AUTO_INCREMENT NOT NULL,
-  firstName VARCHAR(30),
-  lastName VARCHAR(30),
-  PRIMARY KEY (id)
-);
 
 INSERT INTO employee (firstName, lastName, manager) values ('Jane', 'Austen');
 INSERT INTO employee (firstName, lastName, assistantManager) values ('Mark', 'Twain');
