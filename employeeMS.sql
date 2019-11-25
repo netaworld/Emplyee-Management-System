@@ -25,6 +25,17 @@ CREATE TABLE employees(
 );
 
 
+INSERT INTO employee (firstName, lastName,) values ('Jane', 'Austen');
+INSERT INTO employee (firstName, lastName,) values ('Mark', 'Twain');
+INSERT INTO employee (firstName, lastName,) values ('Lewis', 'Carroll');
+INSERT INTO employee (firstName, lastName,) values ('Andre', 'Asselin');
+INSERT INTO employee (firstName, lastName,) values ('Max', 'Brown');
+INSERT INTO employee (firstName, lastName,) values ('Mark', 'Green');
+INSERT INTO employee (firstName, lastName,) values ('Lewis', 'White');
+INSERT INTO employee (firstName, lastName,) values ('Andre', 'Smith');
+
+
+
 INSERT INTO employee (firstName, lastName, manager) values ('Jane', 'Austen');
 INSERT INTO employee (firstName, lastName, assistantManager) values ('Mark', 'Twain');
 INSERT INTO employee (firstName, lastName, CEO) values ('Lewis', 'Carroll');
@@ -34,15 +45,17 @@ INSERT INTO employee (firstName, lastName, teller) values ('Mark', 'Green');
 INSERT INTO employee (firstName, lastName, teller) values ('Lewis', 'White');
 INSERT INTO employee (firstName, lastName, teller) values ('Andre', 'Smith');
 
-
 SELECT * FROM employeeList;
-SELECT * FROM employeeId;
+SELECT * FROM titleId;
 
--- show ALL books with authors
+
 -- INNER JOIN will only return all matching values from both tables
 SELECT employee, firstName, lastName
 FROM employeeList
-INNER JOIN authors ON books.authorId = authors.id;
+INNER JOIN employee ON employeeId = employee.id;
 
-
+-- INNER JOIN will only return all matching values from both tables
+SELECT employee, title
+FROM titleList
+INNER JOIN employee ON titleId = title.id;
 
