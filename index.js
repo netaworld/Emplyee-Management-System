@@ -1,14 +1,33 @@
 const mysql = require("mysql");
-const inquirer = require("inquirer");
+//var inquirer = require("inquirer");
+var inquirer = require('inquirer');
 
+var connection = mysql.createConnection({
+  host: "localhost",
+
+  // Your port; if not 3306
+  port: 3306,
+
+  // Your username
+  user: "root",
+
+  database: "employee_tracker",
+  // Your password
+  password: "rootroot"
+});
+connection.connect(function (err) {
+  if (err) throw err;
+  mainMenu();
+});
 const addDepartment = () => {
-  inquirer.prompt([
+  inquirer
+    .prompt([
     {
       type: "input",
       name: "name",
       message: "Department name?"
     }
-  ]).then(answers) => {
+  ]).then( answers => {
     connection.query("INSERT INTO departments (name) VALUES (?)", [answers.name], (err, rows) =>{
       if (err) throw err;
       console.log('ADDED ${answers.name} to departments.');
@@ -45,27 +64,10 @@ console.log(answers);
 
 
 const addEmployee = () => {
-  const.log("Adding employee...");
+  console.log("Adding employee...");
 };
   
 //create the connection information for the sql database
-var connection = mysql.createConnection({
-  host: "localhost",
-
-  // Your port; if not 3306
-  port: 3306,
-
-  // Your username
-  user: "root",
-
-  // Your password
-  password: "rootroot",
-  database: "employee_tracker"
-});
-connection.connect(function (err) {
-  if (err) throw err;
-  mainManu();
-});
 
 
 // function which prompts the user for what action they should take
@@ -97,4 +99,5 @@ const mainMenu = () => {
 
     
     }
-  });
+  })
+};
